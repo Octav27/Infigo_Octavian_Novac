@@ -143,6 +143,21 @@ CREATE TABLE [dbo].[Topics](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
     ) ON [PRIMARY]
     GO
+    /****** Object: Table [dbo].[Comment] Script: Novac Octavian ******/
+     SET ANSI_NULLS ON
+    GO
+    SET QUOTED_IDENTIFIER ON
+    GO
+CREATE TABLE [dbo].[Comment](
+      [Id] [int] IDENTITY(1,1) NOT NULL,
+      [Nume] [nvarchar](200) NOT NULL,
+      [Comentariu] [nvarchar](max) NOT NULL,
+      [IdTopic] [int] NOT NULL
+
+)
+
+ALTER TABLE [dbo].[Comment] ADD FOREIGN KEY (IdTopic) REFERENCES [dbo].[Topics](Id)
+
 ALTER TABLE [dbo].[Topics] ADD  DEFAULT (getdate()) FOR [CreatedOnUtc]
 ALTER TABLE [dbo].[Topics] ADD  DEFAULT (getdate()) FOR [UpdatedOnUtc]
     GO

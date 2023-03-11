@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
+using System.Reflection.Emit;
 using CMSPlus.Domain.Configurations;
 using CMSPlus.Domain.Entities;
+using CMSPlus.Domain.Models.TopicModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -24,5 +26,10 @@ public class ApplicationDbContext : IdentityDbContext
     {
         builder.ApplyConfiguration(new TopicEntityConfiguration());
         base.OnModelCreating(builder);
+
+        builder.Entity<CommentModel>()
+          .HasOne(c => c.Topic)
+          .WithMany(t => t.Comments)
+          .HasForeignKey(c => c.IdTopic);
     }
 }
