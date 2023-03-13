@@ -1,5 +1,4 @@
 @model CMSPlus.Domain.Models.TopicModels.TopicDetailsModel
-
 @{
     ViewBag.Title = "Details";
     Layout = "_Layout";
@@ -15,10 +14,12 @@
         <p class="col-12 text-black-50 text-end">System name: @Model.SystemName</p>
     </div>
     <div>
-        <form action="" method="post">
-            <input type="text" name="name" placeholder="Nume"/><br/>
-            <textarea name="message" cols="30" rows="10" placeholder="Comentariu"></textarea>
-        
+        <form asp-action="Upsert" method="post">
+            <div>
+            <input asp-for="CreateComment.Nume" type="text" name="name" class="form-control" placeholder="Nume"/><br/>
+            <textarea asp-for="CreateComment.Comentariu" name="message" rows="10" class="form-control" placeholder="Comentariu"></textarea>
+        </div>
+            <button type="submit" class="btn btn-primary">Send</button>
         </form>
 
     </div>

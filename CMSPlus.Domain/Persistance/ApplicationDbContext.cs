@@ -26,10 +26,5 @@ public class ApplicationDbContext : IdentityDbContext
     {
         builder.ApplyConfiguration(new TopicEntityConfiguration());
         base.OnModelCreating(builder);
-
-        builder.Entity<CommentModel>()
-          .HasOne(c => c.Topic)
-          .WithMany(t => t.Comments)
-          .HasForeignKey(c => c.IdTopic);
     }
 }

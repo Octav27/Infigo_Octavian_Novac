@@ -14,4 +14,5 @@ public class TopicDetailsModel:BaseTopicModel
     public DateTime? CreatedOnUtc { get; set; }
     public DateTime? UpdatedOnUtc { get; set; }
     public ICollection<CommentModel> Comments { get; set; }
+    public CommentModel CreateComment { get; set; }
 }

@@ -5,6 +5,7 @@ using CMSPlus.Domain.Models.TopicModels;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
+using CMSPlus.Domain.Persistance;
 
 namespace CMSPlus.Presentation.Controllers;
 
@@ -20,7 +21,6 @@ public class TopicController : Controller
         _topicService = topicService;
         _mapper = mapper;
         _editModelValidator = editModelValidator;
-        _createModelValidator = createModelValidator;
     }
     
     public async Task<IActionResult> Index()
